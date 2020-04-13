@@ -8,19 +8,19 @@
           <tbody>
             <tr class="row">
               <td class="col">
-                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="wipe">
+                <button type="submit" class="btn btn-info btn-simple  float-right" @click.prevent="wipe">
                   <p>Wipe</p>
                 </button>
-                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="reset">
+                <button type="submit" class="btn btn-info  btn-simple float-right" @click.prevent="reset">
                   <p>Reset</p>
                 </button>
-                <button type="submit" class="btn btn-danger btn-simple float-right" @click.prevent="firmware_update(device)">
+                <button type="submit" class="btn btn-info btn-simple float-right" @click.prevent="firmware_update(device)">
                   <p>Firmware</p>
                 </button>    
-                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="delete_device(device)">
+                <button type="submit" class="btn btn-info  btn-simple float-right" @click.prevent="delete_device(device)">
                   <p>Delete</p>
                 </button>                   
-                <button type="submit" class="btn btn-warning btn-simple float-right" @click.prevent="rename(device)">
+                <button type="submit" class="btn btn-info btn-simple float-right" @click.prevent="rename(device)">
                   <p>Rename</p>
                 </button>
               </td>

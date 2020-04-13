@@ -1,14 +1,14 @@
 <template>
     <div class="content">
     <card class="card-firmware">
-    <h4 slot="header" class="card-title">Manage Firmware</h4>
+    <h2 slot="header" class="card-title">Manage Firmware</h2>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <ul list-group class="list-group">
+                    <ul list-group class="list-group list-unstyled">
                         <li v-for="o in firmware" v-bind:key="o" class="flex-column align-items-start">
                             {{o}}&nbsp;&nbsp;
-                            <button type="submit" class="btn btn-secondary  float-right" @click="firmware_delete(o)">
+                            <button type="submit" class="btn btn-info btn-simple  float-right" @click="firmware_delete(o)">
                                 <p>Delete</p>
                             </button>
                         </li>

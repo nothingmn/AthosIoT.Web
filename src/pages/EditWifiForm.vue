@@ -1,6 +1,6 @@
 <template>
   <card>
-    <h4 slot="header" class="card-title">Edit Node WIFI Setting</h4>
+    <h2 slot="header" class="card-title">Edit Node WIFI Setting</h2>
     <form>
       <div class="row">
         <div class="col-md-6">
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="sendWifiToServer">
+        <button type="submit" class="btn btn-info btn-simple float-right" @click.prevent="sendWifiToServer">
           Update Wifi
         </button>
       </div>
