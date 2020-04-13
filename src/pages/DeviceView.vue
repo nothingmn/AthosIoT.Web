@@ -1,5 +1,5 @@
 <template>
-  <card class="row">
+  <div class="row">
     <h3 slot="header" class="col card-title ">
       {{device.name}} 
     </h3>    
@@ -118,7 +118,7 @@
               </tr>
             </div>               
             <div v-if="device.relay" class="col">
-              <tr class="row" v-for="o in device.relay"  v-if="o.id" v-bind:key="o" >
+              <tr class="row" v-for="o in device.relay"  v-if="o.id" v-bind:key="o.id" >
                 <th class="col"><p>{{o.id}} : {{o.name}}</p></th>
                 <td class="float-right col">
                   <button type="submit" class="btn btn-primary btn-simple float-right" @click="relay_rename(device, o)">
@@ -178,13 +178,13 @@
     <rename-relay-modal name="rename-relay-modal"/>
     <rename-device-modal name="rename-device-modal"/>
     <device-firmware-update-modal name="device-firmware-update-modal"/>
-  </card>  
+  </div>  
 </template>
 <script>
-import { Card } from "@/components/Cards/Card.vue";
-import { RenameRelayModal } from "@/components/RenameRelayModal.vue";
-import { RenameDeviceModal } from "@/components/RenameDeviceModal.vue";
-import { DeviceFirmwareUpdateModal } from "@/components/DeviceFirmwareUpdateModal.vue";
+import Card from "@/components/Cards/Card.vue";
+import RenameRelayModal from "@/components/RenameRelayModal.vue";
+import RenameDeviceModal from "@/components/RenameDeviceModal.vue";
+import DeviceFirmwareUpdateModal from "@/components/DeviceFirmwareUpdateModal.vue";
 import Vue from 'vue'
 
 export default {

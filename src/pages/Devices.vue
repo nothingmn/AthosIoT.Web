@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+  import { Card } from "@/components/Cards/Card.vue";
   import DeviceView from '@/pages/DeviceView.vue';
   import Vue from 'vue'
 

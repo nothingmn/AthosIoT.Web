@@ -1,39 +1,38 @@
 <template>
     <modal name="rename-device-modal"  @before-open="beforeOpen">
-      <card>
-        <h4 slot="header" class="card-title">Rename Device</h4>
         <div class="row">
-          <div class="col-lg-12">
-            Please enter the new name for the device:{{device.id}}
+          <div class="col">
+            <h1 class="text-primary">Rename Device</h1>
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col">
+            <p class="text-primary">Please enter the new name for the device:{{device.id}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
             <input v-model="device.name" placeholder="Device Name">
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-12">
-            <button type="submit" class="btn btn-secondary  float-right" @click="hide()">
+          <div class="col">
+            <button type="submit" class="btn btn-primary btn-simple float-right" @click="hide()">
             Cancel
             </button>
-            <button type="submit" class="btn btn-secondary  float-right" @click="device_rename()">
+            <button type="submit" class="btn btn-primary btn-simple float-right" @click="device_rename()">
             Save
             </button>
-
           </div>
       </div>
-      </card>
     </modal>
 </template>
 <script>
-import { Card } from "@/components/Cards/Card.vue";
 
 import Vue from 'vue'
 
 export default {
   components: {
-      Card
   },  
   name: 'rename-device-modal',  
   data () {
