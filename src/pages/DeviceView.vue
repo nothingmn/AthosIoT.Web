@@ -1,14 +1,30 @@
 <template>
-  <card>
-    <h3 slot="header" class="card-title ">
+  <card class="row">
+    <h3 slot="header" class="col card-title ">
       {{device.name}} 
-      <div class="float-right small" :title="tooltip(device)">
-          ({{device.deviceid}} - {{device.type}} - {{device.version}})
-      </div>
     </h3>    
     <div class="table-responsive card-body">
       <table class="table">
           <tbody>
+            <tr class="row">
+              <td class="col">
+                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="wipe">
+                  <p>Wipe</p>
+                </button>
+                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="reset">
+                  <p>Reset</p>
+                </button>
+                <button type="submit" class="btn btn-danger btn-simple float-right" @click.prevent="firmware_update(device)">
+                  <p>Firmware</p>
+                </button>    
+                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="delete_device(device)">
+                  <p>Delete</p>
+                </button>                   
+                <button type="submit" class="btn btn-warning btn-simple float-right" @click.prevent="rename(device)">
+                  <p>Rename</p>
+                </button>
+              </td>
+            </tr>               
           <tr class="row">
             <td class="col">
                 <button type="submit" class="btn btn-primary btn-simple float-right" @click.prevent="ping">
@@ -132,30 +148,29 @@
             </div>
             <div class="col">
               <tr  class="row">
+                <th class="col"><p>Id</p></th>
+                <td class="col"><p>{{device.deviceid}}</p></td>
+              </tr>
+            </div>
+            <div class="col">
+              <tr  class="row">
+                <th class="col"><p> Type</p></th>
+                <td class="col"><p>{{device.type}}</p></td>
+              </tr>
+            </div>
+            <div class="col">
+              <tr  class="row">
+                <th class="col"><p>Version</p></th>
+                <td class="col"><p>{{device.version}}</p></td>
+              </tr>
+            </div>
+            <div class="col">
+              <tr  class="row">
                 <th class="col"><p>Last Updated</p></th>
                 <td class="col"><p>{{(new Date(device.timeStamp)).toLocaleString()}}</p></td>
               </tr>
-            </div>
-            <tr class="row">
-              <td class="col">
-                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="wipe">
-                  <p>Wipe</p>
-                </button>
-                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="reset">
-                  <p>Reset</p>
-                </button>
-                <button type="submit" class="btn btn-danger btn-simple float-right" @click.prevent="firmware_update(device)">
-                  <p>Firmware</p>
-                </button>    
-                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="delete_device(device)">
-                  <p>Delete</p>
-                </button>                   
-                <button type="submit" class="btn btn-warning btn-simple float-right" @click.prevent="rename(device)">
-                  <p>Rename</p>
-                </button>
-              </td>
-          </tr>       
-          <tr><th></th><td></td></tr>           
+            </div>    
+            <tr><th></th><td></td></tr>           
           </tbody>
         </table>
     </div>
