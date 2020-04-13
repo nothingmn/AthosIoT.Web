@@ -10,6 +10,11 @@ const Icons = () => import(/* webpackChunkName: "common" */ "@/pages/Icons.vue")
 const Maps = () => import(/* webpackChunkName: "common" */ "@/pages/Maps.vue");
 const Typography = () => import(/* webpackChunkName: "common" */ "@/pages/Typography.vue");
 const TableList = () => import(/* webpackChunkName: "common" */ "@/pages/TableList.vue");
+// Admin pages
+const ConfigureWifi = () => import(/* webpackChunkName: "common" */ "@/pages/ConfigureWifi.vue");
+const Devices = () => import(/* webpackChunkName: "common" */ "@/pages/Devices.vue");
+const ManageFirmware = () => import(/* webpackChunkName: "common" */ "@/pages/ManageFirmware.vue");
+
 
 const routes = [
   {
@@ -51,6 +56,21 @@ const routes = [
         path: "table-list",
         name: "table-list",
         component: TableList
+      },
+      {
+        path: 'configurewifi',
+        name: 'Configure Wifi',
+        component: ConfigureWifi
+      },
+      {
+        path: 'devices',
+        name: 'Devices',
+        component: Devices
+      },
+      {
+        path: 'firmware',
+        name: 'Firmware',
+        component: ManageFirmware
       }
     ]
   },

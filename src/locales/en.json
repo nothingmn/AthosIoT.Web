@@ -111,7 +111,7 @@
     ]
   },
   "sidebar": {
-    "title": "Creative Tim",
+    "title": "AthosIoT Hub",
     "shortTitle": "CT",
     "dashboard": "dashboard",
     "icons": "Icons",
@@ -120,6 +120,9 @@
     "userProfile": "User Profile",
     "tableList": "Table List",
     "typography": "Typography",
-    "rtlSupport": "RTL Support"
+    "rtlSupport": "RTL Support",
+    "configirewifi": "Configure Node Wifi",
+    "managedevices": "Manage Devices",
+    "managefirmware": "Manage Firmware"
   }
 }
