@@ -1,173 +1,169 @@
 <template>
   <card>
-    <h3 slot="header" class="card-title">
+    <h3 slot="header" class="card-title ">
       {{device.name}} 
       <div class="float-right small" :title="tooltip(device)">
           ({{device.deviceid}} - {{device.type}} - {{device.version}})
       </div>
     </h3>    
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12">
-        <button type="submit" class="btn btn-secondary float-right" @click.prevent="wipe">
-          <p>Wipe</p>
-        </button>
-        <button type="submit" class="btn btn-light float-right" @click.prevent="reset">
-          <p>Reset</p>
-        </button>
-        <button type="submit" class="btn btn-light btn-fill float-right" @click.prevent="firmware_update(device)">
-          <p>Firmware</p>
-        </button>    
-        <button type="submit" class="btn btn-secondary float-right" @click.prevent="delete_device(device)">
-          <p>Delete</p>
-        </button>                   
-        <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="rename(device)">
-          <p>Rename</p>
-        </button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12">
-        <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="ping">
-          <p>Ping</p>
-        </button>        
-        <div v-if="device.relay">
-            <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="all_off(device)">
-              <p>All Off</p>
-            </button>
-            <button type="submit" class="btn btn-info btn-fill float-right" @click.prevent="all_on(device)">
-              <p>All On</p>
-            </button>            
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12">
-        <div class="table-responsive">
-          <table class="table table-hover">
-              <tbody>
-                <div v-if="device.bmp280"  class="col-sm-12">
-                  <tr class="row">
-                    <th scope="row" class="col-sm-6 col-md-6 col-lg-6"><p>Temperature</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.bmp280.temp}}&deg;C</p></td>
-                  </tr>
-                  <tr class="row">
-                    <th scope="row" class="col-sm-6 col-md-6 col-lg-6"><p>Humidity</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.bmp280.humidity}}% Relative Humidity</p></td>
-                  </tr>
-                  <tr  class="row">
-                    <th scope="row" class="col-sm-6 col-md-6 col-lg-6"><p>Pressure</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.bmp280.pressure}} hPa</p></td>
-                  </tr>
-                  <tr  class="row">
-                    <th scope="row" class="col-sm-6 col-md-6 col-lg-6"><p>Altitude</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.bmp280.altitude}} meters</p></td>
-                  </tr>
+    <div class="table-responsive card-body">
+      <table class="table">
+          <tbody>
+          <tr class="row">
+            <td class="col">
+                <button type="submit" class="btn btn-primary btn-simple float-right" @click.prevent="ping">
+                  <p>Ping</p>
+                </button>        
+                <div v-if="device.relay">
+                    <button type="submit" class="btn btn-primary btn-simple float-right" @click.prevent="all_off(device)">
+                      <p>All Off</p>
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-simple float-right" @click.prevent="all_on(device)">
+                      <p>All On</p>
+                    </button>            
                 </div>
-                <div v-if="device.tmp36" class="col-sm-12">
-                  <tr  class="row">
-                    <th scope="row"class="col-sm-6 col-md-6 col-lg-6"><p>Temperature</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.tmp36.temp}}&deg;C</p></td>
-                  </tr>                  
-                </div>
-                <div v-if="device.dht11" class="col-sm-12">
-                  <tr  class="row">
-                    <th scope="row"class="col-sm-6 col-md-6 col-lg-6"><p>Temperature</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.dht11.temp}}&deg;C</p></td>
-                  </tr>
-                  <tr  class="row">
-                    <th scope="row"class="col-sm-6 col-md-6 col-lg-6"><p>Humidity</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.dht11.humidity}} % Relative Humidity</p></td>
-                  </tr>
-                  <tr  class="row">
-                    <th scope="row"class="col-sm-6 col-md-6 col-lg-6"><p>Heat Index</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.dht11.headIndex}}&deg;C</p></td>
-                  </tr>
-                </div>          
-                <div v-if="device.moisture"  class="col-sm-12">
-                  <tr  class="row">
-                    <th scope="row"class="col-sm-6 col-md-6 col-lg-6"><p>Moisture Level</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.moisture.level}}%</p></td>
-                  </tr>
-                </div>               
-                <div v-if="device.mq2" class="col-sm-12">
-                  <tr  class="row">
-                    <th scope="row"class="col-sm-6 col-md-6 col-lg-6"><p>Ratio</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.mq2.ratio}}%</p></td>
-                  </tr>
-                  <tr  class="row">
-                    <th scope="row" class="col-sm-6  col-md-6"><p>LPG</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.mq2.lpg}} ppm</p></td>
-                  </tr>
-                  <tr  class="row">
-                    <th scope="row"class="col-sm-6 col-md-6 col-lg-6"><p>Methane</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.mq2.methane}} ppm</p></td>
-                  </tr>
-                  <tr  class="row">
-                    <th scope="row"class="col-sm-6 col-md-6 col-lg-6"><p>Smoke</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.mq2.smoke}} ppm</p></td>
-                  </tr>
-                  <tr  class="row">
-                    <th scope="row"class="col-sm-6 col-md-6 col-lg-6"><p>Hydrogen</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.mq2.hydrogen}} ppm</p></td>
-                  </tr>
-                </div>               
-                <div v-if="device.pir" class="col-sm-12">
-                  <tr  class="row">
-                    <th scope="row"class="col-sm-6 col-md-6 col-lg-6"><p>Last Movement</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{(new Date(device.pir.movement.timeStamp)).toLocaleString()}}</p></td>
-                  </tr>
-                  <tr  class="row">
-                    <th scope="row" class="col-sm-6"><p>State</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{device.pir.movement.moved}}</p></td>
-                  </tr>
-                </div>               
-                <div v-if="device.relay" class="col-sm-12">
-                    <tr class="row" v-for="o in device.relay"  v-if="o.id" v-bind:key="o" >
-                      <th scope="row" class="col-sm-6 col-md-6 col-lg-6"><p>{{o.id}} : {{o.name}}</p></th>
-                      <td class="float-right col-sm-8 col-md-6">
-                        <button type="submit" class="btn btn-info float-right" @click="relay_rename(device, o)">
-                        <p>Rename</p>
-                        </button>
-                        <div v-if="!o.id.startsWith('M')">
-                          <button type="submit" class="btn btn-info float-right" @click.prevent="relay_off(device, o)">
-                            <p>Off</p>
-                          </button>
-                          <button type="submit" class="btn btn-info float-right" @click.prevent="relay_on(device, o)">
-                            <p>On</p>
-                          </button>        
-                        </div>             
-                        <div v-if="o.id.startsWith('M')">
-                          <button type="submit" class="btn btn-info float-right" @click.prevent="relay_off(device, o)">
-                            <p>Toggle</p>
-                          </button>
-                        </div>             
-                      </td>
-                    </tr>
-                </div>
-                <div v-if="device.ping" class="col-sm-12">
-                  <tr  class="row">
-                    <th scope="row" class="col-sm-6"><p>Ping Delay</p></th>
-                    <td class="col-sm-6"><div v-if="device.ping"><p>{{device.ping.roundTrip}} seconds</p></div></td>
-                  </tr>
-                </div>
-                <div class="col-sm-12">
-                  <tr  class="row">
-                    <th scope="row" class="col-sm-6 col-md-6 col-lg-6"><p>Last Updated</p></th>
-                    <td class="col-sm-6 col-md-6 col-lg-6"><p>{{(new Date(device.timeStamp)).toLocaleString()}}</p></td>
-                  </tr>
-                  </div>
-              </tbody>
-            </table>
-          </div>
-      </div>
+            </td>
+            <td></td>
+          </tr>
+            <div v-if="device.bmp280"  class="col">
+              <tr class="row">
+                <th class="col"><p>Temperature</p></th>
+                <td class="col"><p>{{device.bmp280.temp}}&deg;C</p></td>
+              </tr>
+              <tr class="row">
+                <th class="col"><p>Humidity</p></th>
+                <td class="col"><p>{{device.bmp280.humidity}}% Relative Humidity</p></td>
+              </tr>
+              <tr  class="row">
+                <th class="col"><p>Pressure</p></th>
+                <td class="col"><p>{{device.bmp280.pressure}} hPa</p></td>
+              </tr>
+              <tr  class="row">
+                <th class="col"><p>Altitude</p></th>
+                <td class="col"><p>{{device.bmp280.altitude}} meters</p></td>
+              </tr>
+            </div>
+            <div v-if="device.tmp36" class="col">
+              <tr  class="row">
+                <th scope="row" class="col"><p>Temperature</p></th>
+                <td class="col"><p>{{device.tmp36.temp}}&deg;C</p></td>
+              </tr>                  
+            </div>
+            <div v-if="device.dht11" class="col">
+              <tr  class="row">
+                <th scope="row" class="col"><p>Temperature</p></th>
+                <td class="col"><p>{{device.dht11.temp}}&deg;C</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p>Humidity</p></th>
+                <td class="col"><p>{{device.dht11.humidity}} % Relative Humidity</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p>Heat Index</p></th>
+                <td class="col"><p>{{device.dht11.headIndex}}&deg;C</p></td>
+              </tr>
+            </div>          
+            <div v-if="device.moisture"  class="col">
+              <tr  class="row">
+                <th scope="row" class="col"><p>Moisture Level</p></th>
+                <td class="col"><p>{{device.moisture.level}}%</p></td>
+              </tr>
+            </div>               
+            <div v-if="device.mq2" class="col">
+              <tr  class="row">
+                <th scope="row" class="col"><p>Ratio</p></th>
+                <td class="col"><p>{{device.mq2.ratio}}%</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p>LPG</p></th>
+                <td class="col"><p>{{device.mq2.lpg}} ppm</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p>Methane</p></th>
+                <td class="col"><p>{{device.mq2.methane}} ppm</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p>Smoke</p></th>
+                <td class="col"><p>{{device.mq2.smoke}} ppm</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p>Hydrogen</p></th>
+                <td class="col"><p>{{device.mq2.hydrogen}} ppm</p></td>
+              </tr>
+            </div>               
+            <div v-if="device.pir" class="col">
+              <tr  class="row">
+                <th scope="row" class="col"><p>Last Movement</p></th>
+                <td class="col"><p>{{(new Date(device.pir.movement.timeStamp)).toLocaleString()}}</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p>State</p></th>
+                <td class="col"><p>{{device.pir.movement.moved}}</p></td>
+              </tr>
+            </div>               
+            <div v-if="device.relay" class="col">
+              <tr class="row" v-for="o in device.relay"  v-if="o.id" v-bind:key="o" >
+                <th class="col"><p>{{o.id}} : {{o.name}}</p></th>
+                <td class="float-right col">
+                  <button type="submit" class="btn btn-primary btn-simple float-right" @click="relay_rename(device, o)">
+                  <p>Rename</p>
+                  </button>
+                  <div v-if="!o.id.startsWith('M')">
+                    <button type="submit" class="btn btn-primary btn-simple float-right" @click.prevent="relay_off(device, o)">
+                      <p>Off</p>
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-simple float-right" @click.prevent="relay_on(device, o)">
+                      <p>On</p>
+                    </button>        
+                  </div>             
+                  <div v-if="o.id.startsWith('M')">
+                    <button type="submit" class="btn btn-primary btn-simple float-right" @click.prevent="relay_off(device, o)">
+                      <p>Toggle</p>
+                    </button>
+                  </div>             
+                </td>
+              </tr>
+            </div>
+            <div v-if="device.ping" class="col">
+              <tr class="row">
+                <th scope="row" class="col"><p>Ping Delay</p></th>
+                <td class="col"><div v-if="device.ping"><p>{{device.ping.roundTrip}} seconds</p></div></td>
+              </tr>
+            </div>
+            <div class="col">
+              <tr  class="row">
+                <th class="col"><p>Last Updated</p></th>
+                <td class="col"><p>{{(new Date(device.timeStamp)).toLocaleString()}}</p></td>
+              </tr>
+            </div>
+            <tr class="row">
+              <td class="col">
+                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="wipe">
+                  <p>Wipe</p>
+                </button>
+                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="reset">
+                  <p>Reset</p>
+                </button>
+                <button type="submit" class="btn btn-danger btn-simple float-right" @click.prevent="firmware_update(device)">
+                  <p>Firmware</p>
+                </button>    
+                <button type="submit" class="btn btn-danger  btn-simple float-right" @click.prevent="delete_device(device)">
+                  <p>Delete</p>
+                </button>                   
+                <button type="submit" class="btn btn-warning btn-simple float-right" @click.prevent="rename(device)">
+                  <p>Rename</p>
+                </button>
+              </td>
+          </tr>       
+          <tr><th></th><td></td></tr>           
+          </tbody>
+        </table>
     </div>
     <div class="clearfix"></div>
     <rename-relay-modal name="rename-relay-modal"/>
     <rename-device-modal name="rename-device-modal"/>
     <device-firmware-update-modal name="device-firmware-update-modal"/>
-
   </card>  
-
 </template>
 <script>
 import { Card } from "@/components/Cards/Card.vue";
