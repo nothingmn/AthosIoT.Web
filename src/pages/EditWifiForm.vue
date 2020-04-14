@@ -48,7 +48,6 @@ export default {
         var vm = this;    
         var sock = Vue.prototype.$socket;
         sock.send(JSON.stringify({ action : "get-wifi" }));
-        console.log("get-wifi sent");
         sock.onmessage = function(event) {
           if(event && event.data) {
             var msg = JSON.parse(event.data);

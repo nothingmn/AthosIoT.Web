@@ -34,6 +34,9 @@ Vue.use(VueNativeSock, 'ws://'+window.location.hostname+':1880/ws/athos', {
                                                 format: 'json' 
                                               });
 
+//global event bus
+Vue.eventBus = new Vue () // 1.Declaring
+
 function waitForSocketConnection(socket, callback){
   setTimeout(
       function () {

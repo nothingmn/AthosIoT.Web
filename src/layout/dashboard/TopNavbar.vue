@@ -29,7 +29,7 @@
       <collapse-transition>
         <div class="collapse navbar-collapse show" v-show="showMenu">
           <ul class="navbar-nav" :class="$rtl.isRTL ? 'mr-auto' : 'ml-auto'">
-            <div class="search-bar input-group" @click="searchModalVisible = true">
+            <div class="search-bar input-group"  v-if="searchVisible" @click="searchModalVisible = true">
               <!-- <input type="text" class="form-control" placeholder="Search...">
               <div class="input-group-addon"><i class="tim-icons icon-zoom-split"></i></div> -->
               <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
@@ -44,10 +44,10 @@
                    :show-close="true">
               <input slot="header" v-model="searchQuery" type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
             </modal>
-            <base-dropdown tag="li"
+            <base-dropdown  tag="li"
                            :menu-on-right="!$rtl.isRTL"
                            title-tag="a" class="nav-item">
-              <a slot="title" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
+              <a  slot="title" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
                 <div class="notification d-none d-lg-block d-xl-block"></div>
                 <i class="tim-icons icon-sound-wave"></i>
                 <p class="d-lg-none">
@@ -55,22 +55,10 @@
                 </p>
               </a>
               <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Mike John responded to your email</a>
-              </li>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">You have 5 more tasks</a>
-              </li>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Your friend Michael is in town</a>
-              </li>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Another notification</a>
-              </li>
-              <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">Another one</a>
+                <a href="/#/configurewifi" class="nav-item dropdown-item">Configure Node Wifi</a>
               </li>
             </base-dropdown>
-            <base-dropdown tag="li"
+            <base-dropdown  v-if="false"  tag="li"
                            :menu-on-right="!$rtl.isRTL"
                            title-tag="a"
                            class="nav-item"
@@ -104,11 +92,13 @@
 <script>
   import { CollapseTransition } from 'vue2-transitions';
   import Modal from '@/components/Modal';
+  import Vue from 'vue';
 
   export default {
     components: {
       CollapseTransition,
-      Modal
+      Modal,
+      Vue
     },
     computed: {
       routeName() {
@@ -124,8 +114,24 @@
         activeNotifications: false,
         showMenu: false,
         searchModalVisible: false,
-        searchQuery: ''
+        searchQuery: '',
+        searchVisible : false
       };
+    },
+    watch : {
+      searchQuery : {
+      // the callback will be called immediately after the start of the observation
+          immediate: true, 
+          handler (val, oldVal) {
+            // do your stuff
+            console.log(val);
+            Vue.eventBus.$emit("search", val);
+          }        
+      }
+    },
+    mounted(e) {
+      this.searchVisible = (this.$router.currentRoute.name == "Devices");
+      console.log('mounted1', this.searchVisible);
     },
     methods: {
       capitalizeFirstLetter(string) {

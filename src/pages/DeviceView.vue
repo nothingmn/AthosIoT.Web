@@ -1,6 +1,7 @@
-<template>
-  <div class="row">
-    <h3 slot="header" class="col card-title ">
+<template  >
+  <card>
+  <div class="row" v-if="device.visible" >
+    <h3 slot="header" class="col card-title " :title="tooltip(device)">
       {{device.name}} 
     </h3>    
     <div class="table-responsive card-body">
@@ -41,6 +42,12 @@
             </td>
             <td></td>
           </tr>
+            <div v-if="device.ping" class="col">
+              <tr class="row">
+                <th scope="row" class="col"><p>Ping Delay</p></th>
+                <td class="col"><div v-if="device.ping"><p>{{device.ping.roundTrip}} seconds</p></div></td>
+              </tr>
+            </div>
             <div v-if="device.bmp280"  class="col">
               <tr class="row">
                 <th class="col"><p>Temperature</p></th>
@@ -140,12 +147,6 @@
                 </td>
               </tr>
             </div>
-            <div v-if="device.ping" class="col">
-              <tr class="row">
-                <th scope="row" class="col"><p>Ping Delay</p></th>
-                <td class="col"><div v-if="device.ping"><p>{{device.ping.roundTrip}} seconds</p></div></td>
-              </tr>
-            </div>
             <div class="col">
               <tr  class="row">
                 <th class="col"><p>Id</p></th>
@@ -179,9 +180,11 @@
     <rename-device-modal name="rename-device-modal"/>
     <device-firmware-update-modal name="device-firmware-update-modal"/>
   </div>  
+  </card>
+
 </template>
 <script>
-import Card from "@/components/Cards/Card.vue";
+const Card = () => import(/* webpackChunkName: "common" */ "@/components/Cards/Card.vue");
 import RenameRelayModal from "@/components/RenameRelayModal.vue";
 import RenameDeviceModal from "@/components/RenameDeviceModal.vue";
 import DeviceFirmwareUpdateModal from "@/components/DeviceFirmwareUpdateModal.vue";
@@ -194,7 +197,7 @@ export default {
       RenameDeviceModal,
       DeviceFirmwareUpdateModal
     },
-    props : ['device'],
+    props : ['device', 'visible'],
     data () {
       return {
       }
@@ -230,7 +233,6 @@ export default {
             }
 
           }
-          console.log(tip);          
           return tip;
         },
         all_on(device) {
