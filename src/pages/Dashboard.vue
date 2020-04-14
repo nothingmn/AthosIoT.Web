@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="false">
     <div class="row">
       <div class="col-12">
         <card type="chart">

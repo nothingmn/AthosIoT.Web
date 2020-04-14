@@ -2,7 +2,6 @@
   <div class="wrapper">
     <side-bar>
       <template slot="links">
-        <sidebar-link to="/dashboard" :name="$t('sidebar.dashboard')" icon="tim-icons icon-chart-pie-36"/>
         <sidebar-link to="/configurewifi" :name="$t('sidebar.configirewifi')" icon="tim-icons icon-vector"/>
         <sidebar-link to="/devices" :name="$t('sidebar.managedevices')" icon="tim-icons icon-components"/>
         <sidebar-link to="/firmware" :name="$t('sidebar.managefirmware')" icon="tim-icons icon-app"/>
