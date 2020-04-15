@@ -4,7 +4,6 @@
     <h3 slot="header" class="col card-title " :title="tooltip(device)">
       {{device.name}} 
     </h3>    
-
     <div v-if="device.system && device.system.rssi_percent" title="Wifi Signal Strength" style="color:white" class="tim-icons icon-wifi" >{{device.system.rssi_percent}}%&nbsp;&nbsp;</div>    
     <div v-if="device.system && device.system.rssi_percent" title="Wifi Signal Strength" :style="wifiStyle"></div>    
     <div class="table-responsive card-body">
