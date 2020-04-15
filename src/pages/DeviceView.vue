@@ -4,6 +4,7 @@
     <h3 slot="header" class="col card-title " :title="tooltip(device)">
       {{device.name}} 
     </h3>    
+    <div v-if="device.system && device.system.rssi_percent" class="tim-icons icon-wifi" title="Wifi Signal Strength" :style="wifiStyle"> {{device.system.rssi_percent}}%</div>    
     <div class="table-responsive card-body">
       <table class="table">
           <tbody>
@@ -155,7 +156,7 @@
             </div>
             <div class="col">
               <tr  class="row">
-                <th class="col"><p> Type</p></th>
+                <th class="col"><p>Type</p></th>
                 <td class="col"><p>{{device.type}}</p></td>
               </tr>
             </div>
@@ -200,11 +201,24 @@ export default {
     props : ['device', 'visible'],
     data () {
       return {
+        wifiStyle : "background-color:red; width:0px; vertical-align: middle; height:0px"
       }
     },
     computed : {
     },
       mounted() {    
+        if(this.device && this.device.system && this.device.system.rssi_percent) {
+          var p = this.device.system.rssi_percent;
+          var color = "green";
+          var fontColor = "white";
+          if(p <= 25) {
+            color = "red"            
+          } else if( p > 25 && p<= 75) {
+            color = "yellow";
+            fontColor = "black";
+          }
+          this.wifiStyle = "background-color:"+color+"; width:"+ p +"px; color:"+fontColor+"; vertical-align:bottom; text-align:center;  height:25px";
+        }
       },   
       methods: {
         tooltip(device) {
@@ -217,6 +231,7 @@ export default {
             if(device.system.gatewayIP) tip +=         "Gateway IP:               " + device.system.gatewayIP + "\n";
             if(device.system.SSID) tip +=              "SSID:                           " + device.system.SSID + "\n";
             if(device.system.rssi) tip +=              "RSSI:                          " + device.system.rssi + "dB\n";
+            if(device.system.rssi_percent) tip +=      "Signal Strength:          " + device.system.rssi_percent + "%\n";
             if(device.system.SSID) tip +=              "---------------------------------------------------------------------------\n";
             if(device.system.chipId) tip +=            "Chip Id:                      " + device.system.chipId + "\n";
             if(device.system.cpuFreqMHz) tip +=        "CPU Freq MHz:           " + device.system.cpuFreqMHz + "Mhz\n";
@@ -231,6 +246,7 @@ export default {
               if(device.system.rssi_strength.title) tip += "This node's Signal Stregth is " + device.system.rssi_strength.title + "\n";
               if(device.system.rssi_strength.desc) tip +=  device.system.rssi_strength.desc + "\n";
             }
+            
 
           }
           return tip;

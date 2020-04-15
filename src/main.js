@@ -56,12 +56,12 @@ function waitForSocketConnection(socket, callback){
 
 
 waitForSocketConnection(Vue.prototype.$socket, function() {
-  console.log("websocket ready."); 
-/* eslint-disable no-new */
-new Vue({
-  router,
-  i18n,
-  render: h => h(App)
-}).$mount("#app");
+    console.log("websocket ready."); 
+    /* eslint-disable no-new */
+    new Vue({
+      router,
+      i18n,
+      render: h => h(App)
+    }).$mount("#app");
 
  });
