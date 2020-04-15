@@ -4,7 +4,9 @@
     <h3 slot="header" class="col card-title " :title="tooltip(device)">
       {{device.name}} 
     </h3>    
-    <div v-if="device.system && device.system.rssi_percent" class="tim-icons icon-wifi" title="Wifi Signal Strength" :style="wifiStyle"> {{device.system.rssi_percent}}%</div>    
+
+    <div v-if="device.system && device.system.rssi_percent" title="Wifi Signal Strength" style="color:white" class="tim-icons icon-wifi" >{{device.system.rssi_percent}}%&nbsp;&nbsp;</div>    
+    <div v-if="device.system && device.system.rssi_percent" title="Wifi Signal Strength" :style="wifiStyle"></div>    
     <div class="table-responsive card-body">
       <table class="table">
           <tbody>
@@ -201,25 +203,27 @@ export default {
     props : ['device', 'visible'],
     data () {
       return {
-        wifiStyle : "background-color:red; width:0px; vertical-align: middle; height:0px"
+        
       }
     },
     computed : {
-    },
-      mounted() {    
-        if(this.device && this.device.system && this.device.system.rssi_percent) {
-          var p = this.device.system.rssi_percent;
-          var color = "green";
-          var fontColor = "white";
-          if(p <= 25) {
-            color = "red"            
-          } else if( p > 25 && p<= 75) {
-            color = "yellow";
-            fontColor = "black";
+        wifiStyle : function() {        
+          if(this.device && this.device.system && this.device.system.rssi_percent) {
+            var p = this.device.system.rssi_percent;
+            var color = "green";
+            var fontColor = "white";
+            if(p <= 25) {
+              color = "red"            
+            } else if( p > 25 && p<= 75) {
+              color = "yellow";
+              fontColor = "black";
+            }
+            return  "background-color:"+color+"; width:"+ p +"px; color:"+fontColor+"; vertical-align:bottom; text-align:center;  height:25px";
+          } else {
+            return "width:0px; vertical-align: middle; height:0px";
           }
-          this.wifiStyle = "background-color:"+color+"; width:"+ p +"px; color:"+fontColor+"; vertical-align:bottom; text-align:center;  height:25px";
         }
-      },   
+      },
       methods: {
         tooltip(device) {
           var tip =                                    "Name:                        " + device.name + "\n";
