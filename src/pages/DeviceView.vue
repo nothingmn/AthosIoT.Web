@@ -50,6 +50,16 @@
                 <td class="col"><div v-if="device.ping"><p>{{device.ping.roundTrip}} seconds</p></div></td>
               </tr>
             </div>
+            <div v-if="device.mq135" class="col">
+              <tr class="row">
+                <th scope="row" class="col"><p>Ratio</p></th>
+                <td class="col"><div v-if="device.ping"><p>{{device.mq135.ratio}}%</p></div></td>
+              </tr>
+              <tr class="row">
+                <th scope="row" class="col"><p>Carbon Dioxide</p></th>
+                <td class="col"><div v-if="device.ping"><p>{{device.mq135.co2}}ppm</p></div></td>
+              </tr>
+            </div>
             <div v-if="device.bmp280"  class="col">
               <tr class="row">
                 <th class="col"><p>Temperature</p></th>
@@ -115,7 +125,25 @@
                 <th scope="row" class="col"><p>Hydrogen</p></th>
                 <td class="col"><p>{{device.mq2.hydrogen}} ppm</p></td>
               </tr>
-            </div>               
+            </div>      
+            <div v-if="device.mq9" class="col">
+              <tr  class="row">
+                <th scope="row" class="col"><p>Ratio</p></th>
+                <td class="col"><p>{{device.mq9.ratio}}%</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p>LPG</p></th>
+                <td class="col"><p>{{device.mq9.lpg}} ppm</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p>Methane</p></th>
+                <td class="col"><p>{{device.mq9.methane}} ppm</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p>Carbon Monoxide</p></th>
+                <td class="col"><p>{{device.mq9.co}} ppm</p></td>
+              </tr>
+            </div>                        
             <div v-if="device.pir" class="col">
               <tr  class="row">
                 <th scope="row" class="col"><p>Last Movement</p></th>
