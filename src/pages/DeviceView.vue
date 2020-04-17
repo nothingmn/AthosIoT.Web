@@ -60,6 +60,16 @@
                 <td class="col"><div v-if="device.mq135"><p>{{device.mq135.co2}}ppm</p></div></td>
               </tr>
             </div>
+            <div v-if="device.mq8" class="col">
+              <tr class="row">
+                <th scope="row" class="col"><p>Sensor Resistance Ratio</p></th>
+                <td class="col"><div v-if="device.mq8"><p>{{device.mq8.ratio}}%</p></div></td>
+              </tr>
+              <tr class="row">
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Hydrogen" target="_new">Hydrogen</a></p></th>
+                <td class="col"><div v-if="device.mq8"><p>{{device.mq8.hydrogen}}ppm</p></div></td>
+              </tr>
+            </div>
             <div v-if="device.bmp280"  class="col">
               <tr class="row">
                 <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Temperature" target="_new">Temperature</a></p></th>
