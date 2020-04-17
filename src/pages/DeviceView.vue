@@ -165,7 +165,21 @@
                 <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Carbon_monoxide" target="_new">Carbon Monoxide</a></p></th>
                 <td class="col"><p>{{device.mq9.co}} ppm</p></td>
               </tr>
-            </div>                        
+            </div>    
+            <div v-if="device.mq6" class="col">
+              <tr  class="row">
+                <th scope="row" class="col"><p>Sensor Resistance Ratio</p></th>
+                <td class="col"><p>{{device.mq6.ratio}}%</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Liquefied_petroleum_gas" target="_new">Liquefied petroleum gas</a></p></th>
+                <td class="col"><p>{{device.mq6.lpg}} ppm</p></td>
+              </tr>              
+              <tr  class="row">
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Butane" target="_new">Butane</a></p></th>
+                <td class="col"><p>{{device.mq6.butane}} ppm</p></td>
+              </tr>
+            </div>                                  
             <div v-if="device.pir" class="col">
               <tr  class="row">
                 <th scope="row" class="col"><p>Last Movement</p></th>
