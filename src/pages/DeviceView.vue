@@ -180,6 +180,20 @@
                 <td class="col"><p>{{device.mq6.butane}} ppm</p></td>
               </tr>
             </div>                                  
+            <div v-if="device.mq5" class="col">
+              <tr  class="row">
+                <th scope="row" class="col"><p>Sensor Resistance Ratio</p></th>
+                <td class="col"><p>{{device.mq5.ratio}}%</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Liquefied_petroleum_gas" target="_new">Liquefied petroleum gas</a></p></th>
+                <td class="col"><p>{{device.mq5.lpg}} ppm</p></td>
+              </tr>              
+              <tr  class="row">
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Methane" target="_new">Methane</a></p></th>
+                <td class="col"><p>{{device.mq5.methane}} ppm</p></td>
+              </tr>
+            </div>   
             <div v-if="device.pir" class="col">
               <tr  class="row">
                 <th scope="row" class="col"><p>Last Movement</p></th>
