@@ -194,6 +194,20 @@
                 <td class="col"><p>{{device.mq5.methane}} ppm</p></td>
               </tr>
             </div>   
+            <div v-if="device.mq4" class="col">
+              <tr  class="row">
+                <th scope="row" class="col"><p>Sensor Resistance Ratio</p></th>
+                <td class="col"><p>{{device.mq4.ratio}}%</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Compressed_natural_gas" target="_new">Compressed natural gas</a></p></th>
+                <td class="col"><p>{{device.mq4.cng}} ppm</p></td>
+              </tr>              
+              <tr  class="row">
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Methane" target="_new">Methane</a></p></th>
+                <td class="col"><p>{{device.mq4.methane}} ppm</p></td>
+              </tr>
+            </div> 
             <div v-if="device.pir" class="col">
               <tr  class="row">
                 <th scope="row" class="col"><p>Last Movement</p></th>
