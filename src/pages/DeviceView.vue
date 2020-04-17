@@ -208,6 +208,20 @@
                 <td class="col"><p>{{device.mq4.methane}} ppm</p></td>
               </tr>
             </div> 
+            <div v-if="device.mq3" class="col">
+              <tr  class="row">
+                <th scope="row" class="col"><p>Sensor Resistance Ratio</p></th>
+                <td class="col"><p>{{device.mq3.ratio}}%</p></td>
+              </tr>
+              <tr  class="row">
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Alcohol" target="_new">Alcohol</a></p></th>
+                <td class="col"><p>{{device.mq3.alcoholPPM}} ppm</p></td>
+              </tr>              
+              <tr  class="row">
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Alcohol" target="_new">Alcohol</a></p></th>
+                <td class="col"><p>{{device.mq3.alcoholMGL}} mG/L</p></td>
+              </tr>
+            </div>             
             <div v-if="device.pir" class="col">
               <tr  class="row">
                 <th scope="row" class="col"><p>Last Movement</p></th>
