@@ -52,49 +52,51 @@
             </div>
             <div v-if="device.mq135" class="col">
               <tr class="row">
-                <th scope="row" class="col"><p>Ratio</p></th>
-                <td class="col"><div v-if="device.ping"><p>{{device.mq135.ratio}}%</p></div></td>
+                <th scope="row" class="col"><p>Sensor Resistance Ratio</p></th>
+                <td class="col"><div v-if="device.mq135"><p>{{device.mq135.ratio}}%</p></div></td>
               </tr>
               <tr class="row">
-                <th scope="row" class="col"><p>Carbon Dioxide</p></th>
-                <td class="col"><div v-if="device.ping"><p>{{device.mq135.co2}}ppm</p></div></td>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Carbon_dioxide" target="_new">Carbon Dioxide</a></p></th>
+                <td class="col"><div v-if="device.mq135"><p>{{device.mq135.co2}}ppm</p></div></td>
               </tr>
             </div>
             <div v-if="device.bmp280"  class="col">
               <tr class="row">
-                <th class="col"><p>Temperature</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Temperature" target="_new">Temperature</a></p></th>
                 <td class="col"><p>{{device.bmp280.temp}}&deg;C</p></td>
               </tr>
               <tr class="row">
-                <th class="col"><p>Humidity</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Humidity" target="_new">Humidity</a></p></th>
                 <td class="col"><p>{{device.bmp280.humidity}}% Relative Humidity</p></td>
               </tr>
-              <tr  class="row">
-                <th class="col"><p>Pressure</p></th>
+              <tr  class="row">                
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Atmospheric_pressure" target="_new">Atmospheric Pressure</a></p></th>
                 <td class="col"><p>{{device.bmp280.pressure}} hPa</p></td>
               </tr>
               <tr  class="row">
-                <th class="col"><p>Altitude</p></th>
+                
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Altitude" target="_new">Altitude</a></p></th>
                 <td class="col"><p>{{device.bmp280.altitude}} meters</p></td>
               </tr>
             </div>
             <div v-if="device.tmp36" class="col">
               <tr  class="row">
-                <th scope="row" class="col"><p>Temperature</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Temperature" target="_new">Temperature</a></p></th>
                 <td class="col"><p>{{device.tmp36.temp}}&deg;C</p></td>
               </tr>                  
             </div>
             <div v-if="device.dht11" class="col">
               <tr  class="row">
-                <th scope="row" class="col"><p>Temperature</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Temperature" target="_new">Temperature</a></p></th>
                 <td class="col"><p>{{device.dht11.temp}}&deg;C</p></td>
               </tr>
               <tr  class="row">
-                <th scope="row" class="col"><p>Humidity</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Humidity" target="_new">Humidity</a></p></th>
                 <td class="col"><p>{{device.dht11.humidity}} % Relative Humidity</p></td>
               </tr>
               <tr  class="row">
-                <th scope="row" class="col"><p>Heat Index</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Heat_index" target="_new">Heat Index</a></p></th>
+                <th scope="row" class="col"><p></p></th>
                 <td class="col"><p>{{device.dht11.headIndex}}&deg;C</p></td>
               </tr>
             </div>          
@@ -106,41 +108,41 @@
             </div>               
             <div v-if="device.mq2" class="col">
               <tr  class="row">
-                <th scope="row" class="col"><p>Ratio</p></th>
+                <th scope="row" class="col"><p>Sensor Resistance Ratio</p></th>
                 <td class="col"><p>{{device.mq2.ratio}}%</p></td>
               </tr>
               <tr  class="row">
-                <th scope="row" class="col"><p>LPG</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Liquefied_petroleum_gas" target="_new">Liquefied petroleum gas</a></p></th>
                 <td class="col"><p>{{device.mq2.lpg}} ppm</p></td>
               </tr>
               <tr  class="row">
-                <th scope="row" class="col"><p>Methane</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Methane" target="_new">Methane</a></p></th>
                 <td class="col"><p>{{device.mq2.methane}} ppm</p></td>
               </tr>
               <tr  class="row">
-                <th scope="row" class="col"><p>Smoke</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Smoke" target="_new">Smoke</a></p></th>
                 <td class="col"><p>{{device.mq2.smoke}} ppm</p></td>
               </tr>
               <tr  class="row">
-                <th scope="row" class="col"><p>Hydrogen</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Hydrogen" target="_new">Hydrogen</a></p></th>
                 <td class="col"><p>{{device.mq2.hydrogen}} ppm</p></td>
               </tr>
             </div>      
             <div v-if="device.mq9" class="col">
               <tr  class="row">
-                <th scope="row" class="col"><p>Ratio</p></th>
+                <th scope="row" class="col"><p>Sensor Resistance Ratio</p></th>
                 <td class="col"><p>{{device.mq9.ratio}}%</p></td>
               </tr>
               <tr  class="row">
-                <th scope="row" class="col"><p>LPG</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Liquefied_petroleum_gas" target="_new">Liquefied petroleum gas</a></p></th>
                 <td class="col"><p>{{device.mq9.lpg}} ppm</p></td>
-              </tr>
+              </tr>              
               <tr  class="row">
-                <th scope="row" class="col"><p>Methane</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Methane" target="_new">Methane</a></p></th>
                 <td class="col"><p>{{device.mq9.methane}} ppm</p></td>
               </tr>
               <tr  class="row">
-                <th scope="row" class="col"><p>Carbon Monoxide</p></th>
+                <th scope="row" class="col"><p><a href="https://en.wikipedia.org/wiki/Carbon_monoxide" target="_new">Carbon Monoxide</a></p></th>
                 <td class="col"><p>{{device.mq9.co}} ppm</p></td>
               </tr>
             </div>                        
