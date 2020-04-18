@@ -1,13 +1,9 @@
 <template>
-  <div class="content">
-    <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 col-sm-12 col-lg-6" v-for="(card, index) in cards" :key="index">
           <component  :is="card['card-type']" :device="card.card.device">
           </component>
-        </div>
       </div>
-    </div>
   </div>
 </template>
 <script>
