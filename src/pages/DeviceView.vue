@@ -243,6 +243,38 @@
                                             </td>
                                         </tr>
                                     </div>
+                                    <div v-if="device.dht22" class="col">
+                                        <tr class="row">
+                                            <th scope="row" class="col">
+                                                <p><a href="https://en.wikipedia.org/wiki/Temperature"
+                                                        target="_new">Temperature</a></p>
+                                            </th>
+                                            <td class="col">
+                                                <p>{{device.dht22.temp}}&deg;C</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="row">
+                                            <th scope="row" class="col">
+                                                <p><a href="https://en.wikipedia.org/wiki/Humidity"
+                                                        target="_new">Humidity</a></p>
+                                            </th>
+                                            <td class="col">
+                                                <p>{{device.dht22.humidity}} % Relative Humidity</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="row">
+                                            <th scope="row" class="col">
+                                                <p><a href="https://en.wikipedia.org/wiki/Heat_index" target="_new">Heat
+                                                        Index</a></p>
+                                            </th>
+                                            <th scope="row" class="col">
+                                                <p></p>
+                                            </th>
+                                            <td class="col">
+                                                <p>{{device.dht22.headIndex}}&deg;C</p>
+                                            </td>
+                                        </tr>
+                                    </div>
                                     <div v-if="device.moisture" class="col">
                                         <tr class="row">
                                             <th scope="row" class="col">
