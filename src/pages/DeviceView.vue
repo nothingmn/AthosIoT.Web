@@ -235,9 +235,6 @@
                                                 <p><a href="https://en.wikipedia.org/wiki/Heat_index" target="_new">Heat
                                                         Index</a></p>
                                             </th>
-                                            <th scope="row" class="col">
-                                                <p></p>
-                                            </th>
                                             <td class="col">
                                                 <p>{{device.dht11.headIndex}}&deg;C</p>
                                             </td>
@@ -266,9 +263,6 @@
                                             <th scope="row" class="col">
                                                 <p><a href="https://en.wikipedia.org/wiki/Heat_index" target="_new">Heat
                                                         Index</a></p>
-                                            </th>
-                                            <th scope="row" class="col">
-                                                <p></p>
                                             </th>
                                             <td class="col">
                                                 <p>{{device.dht22.headIndex}}&deg;C</p>
