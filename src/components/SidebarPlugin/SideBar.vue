@@ -8,17 +8,17 @@
     <!-- -->
     <div class="sidebar-wrapper" id="style-3">
       <div class="logo">
-        <a href="http://www.creative-tim.com"
+        <a href="/#devices"
            aria-label="sidebar mini logo"
            class="simple-text logo-mini">
           <div class="logo-img"
                :class="{'logo-img-rtl': $rtl.isRTL}">
             <img
               src="img/athos-logo.png"
-              alt="">
+              alt="Devices">
           </div>
         </a>
-        <a href="/" class="simple-text logo-normal">
+        <a href="/#devices" class="simple-text logo-normal">
           {{title}}
         </a>
       </div>
@@ -132,6 +132,11 @@
       this.$watch("$route", this.findActiveLink, {
         immediate: true
       });
+      this.links.add({
+          href : "http://admin:secret@athosiothub:81",
+          name : "RaspAP",
+          icon : "icon-wifi"
+        })
     }
   };
 </script>

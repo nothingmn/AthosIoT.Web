@@ -4,11 +4,17 @@
              class="nav-item"
              v-bind="$attrs"
              tag="li">
-    <a class="nav-link">
+    <a v-if="href" :href="href">
       <slot>
         <i v-if="icon" :class="icon"></i>
         <p>{{name}}</p>
       </slot>
+    </a>
+    <a class="nav-link">
+        <slot>
+          <i v-if="icon" :class="icon"></i>
+          <p>{{name}}</p>
+        </slot>
     </a>
   </component>
 </template>

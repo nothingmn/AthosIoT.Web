@@ -14,6 +14,7 @@ const TableList = () => import(/* webpackChunkName: "common" */ "@/pages/TableLi
 const ConfigureWifi = () => import(/* webpackChunkName: "common" */ "@/pages/ConfigureWifi.vue");
 const Devices = () => import(/* webpackChunkName: "common" */ "@/pages/Devices.vue");
 const ManageFirmware = () => import(/* webpackChunkName: "common" */ "@/pages/ManageFirmware.vue");
+const SelectServer = () => import(/* webpackChunkName: "common" */ "@/pages/SelectServer.vue");
 
 
 const routes = [
@@ -59,18 +60,23 @@ const routes = [
       },
       {
         path: 'configurewifi',
-        name: 'Configure Wifi',
+        name: 'Configure Node Wifi',
         component: ConfigureWifi
       },
       {
         path: 'devices',
-        name: 'Devices',
+        name: 'Manage Devices',
         component: Devices
       },
       {
         path: 'firmware',
-        name: 'Firmware',
+        name: 'Manage Firmware',
         component: ManageFirmware
+      },
+      {
+        path: 'selectserver',
+        name: 'Select Server',
+        component: SelectServer
       }
     ]
   },

@@ -3,14 +3,14 @@
     <h2 slot="header" class="card-title">Edit Node WIFI Setting</h2>
     <form>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col">
           <base-input type="text"
                     label="SSID"
                     placeholder="Wifi SSID"
                     v-model="wifi.ssid">
           </base-input>
         </div>
-        <div class="col-md-6">
+        <div class="col">
           <base-input type="password"
                     label="Password"
                     placeholder="Wifi Password"
