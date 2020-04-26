@@ -211,6 +211,18 @@
                                             </td>
                                         </tr>
                                     </div>
+                                    <div v-if="device.button" class="col">
+                                        <tr class="row">
+                                            <th scope="row" class="col">
+                                                <p>Buttons</p>
+                                            </th>
+                                            <td class="col">
+                                                    <p v-for="(item, index) in device.button" :key="item">
+                                                        {{index}} = {{item}}
+                                                    </p>
+                                            </td>
+                                        </tr>
+                                    </div>
                                     <div v-if="device.dht11" class="col">
                                         <tr class="row">
                                             <th scope="row" class="col">
