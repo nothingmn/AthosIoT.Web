@@ -11,6 +11,7 @@
                                         <td class="col col-8">
                                             <h3 slot="header" class="col card-title " :title="tooltip(device)">
                                                 {{device.name}}
+                                                <p class="mouse text-muted">{{moment(device.timeStamp).fromNow()}}</p>
                                             </h3>
                                         </td>
                                         <td class="col col-1">
@@ -47,6 +48,10 @@
                                                 @click.prevent="reset">
                                                 <p>Reset</p>
                                             </button>
+                                            <button type="submit" class="btn btn-info  btn-simple float-right"
+                                                @click.prevent="restart">
+                                                <p>Restart</p>
+                                            </button>
                                             <button type="submit" class="btn btn-info btn-simple float-right"
                                                 @click.prevent="firmware_update(device)">
                                                 <p>Firmware</p>
@@ -67,7 +72,17 @@
                                                 @click.prevent="ping">
                                                 <p>Ping</p>
                                             </button>
-                                            <div v-if="device.relay">
+                                            <div v-if="(device.relay)">
+                                                <button type="submit" class="btn btn-primary btn-simple float-right"
+                                                    @click.prevent="all_off(device)">
+                                                    <p>All Off</p>
+                                                </button>
+                                                <button type="submit" class="btn btn-primary btn-simple float-right"
+                                                    @click.prevent="all_on(device)">
+                                                    <p>All On</p>
+                                                </button>
+                                            </div>
+                                            <div v-if="(device.NeoPixel)">
                                                 <button type="submit" class="btn btn-primary btn-simple float-right"
                                                     @click.prevent="all_off(device)">
                                                     <p>All Off</p>
@@ -112,6 +127,24 @@
                                                 <div v-if="device.mq135">
                                                     <p>{{device.mq135.co2}}ppm</p>
                                                 </div>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                    <div v-if="device.NeoPixel" class="col">
+                                        <tr class="row">
+                                            <th scope="row" class="col">
+                                                <p>Device Pin</p>
+                                            </th>
+                                            <td class="col">
+                                                <p>{{device.NeoPixel.Pin}}</p>
+                                            </td>
+                                        </tr>
+                                        <tr class="row">
+                                            <th scope="row" class="col">
+                                                <p>Pixel Count</p>
+                                            </th>
+                                            <td class="col">
+                                                <p>{{device.NeoPixel.Count}}</p>
                                             </td>
                                         </tr>
                                     </div>
@@ -713,9 +746,9 @@ export default {
           console.log('reset device:', this.device.deviceid );
           Vue.prototype.$socket.send(JSON.stringify({ action : "reset-device", deviceid : this.device.deviceid }));
         },
-        reboot() {
-          console.log('reboot device:', this.device.deviceid );
-          Vue.prototype.$socket.send(JSON.stringify({ action : "reboot-device", deviceid : this.device.deviceid }));
+        restart() {
+          console.log('restart device:', this.device.deviceid );
+          Vue.prototype.$socket.send(JSON.stringify({ action : "restart-device", deviceid : this.device.deviceid }));
         },
         delete_device() {
           console.log('delete-device:', this.device.deviceid );
@@ -726,5 +759,8 @@ export default {
 
 </script>
 <style>
-
+.mouse {
+/*  12px  */
+  font-size:0.75rem;
+}
 </style>

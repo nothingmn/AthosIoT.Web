@@ -24,6 +24,9 @@ import FileUpload from 'v-file-upload'
 import BlackDashboard from "./plugins/blackDashboard";
 import i18n from "./i18n"
 import './registerServiceWorker'
+import moment from 'moment'
+
+Vue.prototype.moment = moment
 Vue.use(BlackDashboard);
 Vue.use(VueRouter);
 Vue.use(RouterPrefetch);
