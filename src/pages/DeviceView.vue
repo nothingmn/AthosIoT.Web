@@ -19,7 +19,7 @@
                                                 <div v-if="device.system && device.system.rssi_percent"
                                                     title="Wifi Signal Strength" style="color:white"
                                                     class="tim-icons icon-wifi">
-                                                    {{device.system.rssi_percent}}%&nbsp;&nbsp;</div>
+                                                    <p class="big-mouse text-muted">{{device.system.rssi_percent}}%</p>&nbsp;&nbsp;</div>
                                             </div>
                                         </td>
                                         <td class="col col-3">
@@ -762,5 +762,9 @@ export default {
 .mouse {
 /*  12px  */
   font-size:0.75rem;
+}
+.big-mouse {
+/*  12px  */
+  font-size:0.85rem;
 }
 </style>
