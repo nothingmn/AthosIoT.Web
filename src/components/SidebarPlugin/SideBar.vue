@@ -132,11 +132,6 @@
       this.$watch("$route", this.findActiveLink, {
         immediate: true
       });
-      this.links.add({
-          href : "http://admin:secret@athosiothub:81",
-          name : "RaspAP",
-          icon : "icon-wifi"
-        })
     }
   };
 </script>
