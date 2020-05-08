@@ -31,7 +31,7 @@
                                     <tr class="row row-12">
                                         <td class="col col-12">
                                             <table width="100%">
-                                                <tr><td><span v-if="device.system && device.system.boot && device.system.boot.timeStamp" class="mouse text-muted"><b>First</b>: {{moment(device.system.boot.timeStamp).fromNow()}}<br /></span></td><td><span class="mouse text-muted"><b>Device Id</b>:{{device.deviceid}}</span></td></tr>
+                                                <tr><td><span v-if="device.system && device.system.boot && device.system.boot.timeStamp" class="mouse text-muted"><b>First</b>: {{moment(device.system.boot.timeStamp).fromNow()}}<br /></span></td><td><span class="mouse text-muted"><b>Device Id</b>: {{device.deviceid}}</span></td></tr>
                                                 <tr><td><span class="mouse text-muted"><b>Last</b>: {{moment(device.timeStamp).fromNow()}}</span></td><td><span class="mouse text-muted"><b>IP Address</b>: {{device.system.localIP}}</span></td></tr>
                                             </table>
                                         </td>
