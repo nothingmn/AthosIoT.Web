@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "chart.js": "^2.7.3",
-    "moment": "^2.25.3",
+    "moment": "^2.29.2",
     "register-service-worker": "^1.5.2",
     "v-file-upload": "^3.1.7",
     "v-tooltip": "^2.0.0-rc.33",
